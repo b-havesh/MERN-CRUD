@@ -37,6 +37,7 @@ TixFlow is designed for:
 
 ---
 
+<<<<<<< HEAD
 ### **🔗 API Documentation**
 
 - **Base URL**: `http://localhost:3000/api`
@@ -149,6 +150,114 @@ TixFlow is designed for:
        "message": "Ticket deleted successfully"
      }
      ```
+=======
+🔗 API Documentation
+Base URL: http://localhost:3000/api
+Endpoints:
+1. Create a new ticket
+Endpoint: POST /api/tickets
+Description: Creates a new support ticket.
+Request Body:
+json
+Copy code
+{
+  "title": "Issue with login",
+  "description": "Unable to log into the system",
+  "status": "Open",            // Optional, defaults to "Open"
+  "priority": "High",           // Optional, defaults to "Medium"
+  "createdBy": "John Doe"       // Required
+}
+Success Response:
+json
+Copy code
+{
+  "_id": "6139d98f5d43233b3410fb7a",
+  "title": "Issue with login",
+  "description": "Unable to log into the system",
+  "status": "Open",
+  "priority": "High",
+  "createdBy": "John Doe",
+  "createdAt": "2021-09-09T12:00:00.000Z",
+  "updatedAt": "2021-09-09T12:00:00.000Z"
+}
+2. Retrieve all tickets
+Endpoint: GET /api/tickets
+Description: Fetch all tickets.
+Success Response:
+json
+Copy code
+[
+  {
+    "_id": "6139d98f5d43233b3410fb7a",
+    "title": "Issue with login",
+    "description": "Unable to log into the system",
+    "status": "Open",
+    "priority": "High",
+    "createdBy": "John Doe",
+    "createdAt": "2021-09-09T12:00:00.000Z",
+    "updatedAt": "2021-09-09T12:00:00.000Z"
+  },
+  {
+    "_id": "6139d98f5d43233b3410fb7b",
+    "title": "Error in payment gateway",
+    "description": "Payment is failing",
+    "status": "Closed",
+    "priority": "Medium",
+    "createdBy": "Jane Smith",
+    "createdAt": "2021-09-08T15:00:00.000Z",
+    "updatedAt": "2021-09-09T12:00:00.000Z"
+  }
+]
+3. Retrieve a single ticket by ID
+Endpoint: GET /api/tickets/:id
+Description: Fetch a specific ticket by its unique identifier.
+Success Response:
+json
+Copy code
+{
+  "_id": "6139d98f5d43233b3410fb7a",
+  "title": "Issue with login",
+  "description": "Unable to log into the system",
+  "status": "Open",
+  "priority": "High",
+  "createdBy": "John Doe",
+  "createdAt": "2021-09-09T12:00:00.000Z",
+  "updatedAt": "2021-09-09T12:00:00.000Z"
+}
+4. Update a ticket by ID
+Endpoint: PATCH /api/tickets/:id
+Description: Update the details of an existing ticket by its unique identifier.
+Request Body:
+json
+Copy code
+{
+  "status": "In Progress",
+  "priority": "Low"
+}
+Success Response:
+json
+Copy code
+{
+  "_id": "6139d98f5d43233b3410fb7a",
+  "title": "Issue with login",
+  "description": "Unable to log into the system",
+  "status": "In Progress",
+  "priority": "Low",
+  "createdBy": "John Doe",
+  "createdAt": "2021-09-09T12:00:00.000Z",
+  "updatedAt": "2021-09-09T14:00:00.000Z"
+}
+5. Delete a ticket by ID
+Endpoint: DELETE /api/tickets/:id
+Description: Deletes a ticket by its unique identifier.
+Success Response:
+json
+Copy code
+{
+  "message": "Ticket deleted successfully"
+}
+
+>>>>>>> 58d8b6534aef7c66cc0266b7c926eb166a517f6e
 
 ---
 
