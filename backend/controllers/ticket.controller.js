@@ -1,4 +1,4 @@
-const Ticket = require("../models/ticketmodel.js");
+const Ticket = require("../models/ticket.model.js");
 
 //* Get all tickets
 const getTickets = async (req, res) => {
@@ -38,7 +38,8 @@ const createTicket = async (req, res) => {
     const newTicket = await ticket.save();
     res.status(201).json(newTicket);
   } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
+    console.error("Error creating ticket:", error);
+    res.status(500).json({ message: error.message });
   }
 };
 
