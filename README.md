@@ -1,54 +1,49 @@
-Here is a comprehensive **README** file with setup instructions and API documentation for the **TixFlow** project, tailored according to the task requirements:
-
----
-
 # TixFlow 🗂️  
 **A Simple Ticket Management System using Node.js and MongoDB**
 
 ---
 
-## 📖 Overview
+## 📖 Project Description
 
-TixFlow is a RESTful API built with **Node.js** and **MongoDB** to manage support tickets. It allows users to create, read, update, and delete (CRUD) support tickets. This project demonstrates how to build a simple ticket management system with proper validation and error handling.
-
----
-
-## 🛠️ Technology Stack
-
-- **Node.js**: Backend runtime
-- **Express.js**: Web framework for building APIs
-- **MongoDB**: NoSQL database for storing tickets
-- **Mongoose**: ORM for MongoDB
-- **Cors**: Cross-Origin Resource Sharing middleware
-- **Body-Parser**: Middleware for parsing request bodies
+**TixFlow** is a lightweight ticket management system that allows users to create, manage, and track support tickets. Built using **Node.js** on the backend and **React.js** for the frontend, TixFlow provides a responsive and user-friendly interface to manage tickets with ease.
 
 ---
 
-## 📁 Project Structure
+## 🌟 Overview
 
-```bash
-TixFlow/
-├── controllers/
-│   └── ticket.controller.js   # Ticket CRUD operations
-├── models/
-│   └── ticket.model.js        # Mongoose schema for ticket data
-├── routes/
-│   └── ticket.route.js        # RESTful routes for the ticket API
-├── server.js                  # Express server configuration
-├── .env                       # Environment variables (e.g., MongoDB URI)
-└── README.md                  # Project documentation
-```
+TixFlow is designed for:
+- **Creating** support tickets with different priority levels and statuses.
+- **Tracking** the progress of tickets through a user-friendly interface.
+- **Managing** tickets with features like editing, updating status, and deleting tickets.
+- A well-structured RESTful API to handle ticket management.
+
+---
+
+## 🛠️ Tech Stack
+
+### **Frontend**:
+- **React.js**: A JavaScript library for building dynamic user interfaces.
+- **React-Router-Dom**: React.js routing library.
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
+- **Lucide Icons**: Modern icon library for adding UI icons.
+
+### **Backend**:
+- **Node.js**: JavaScript runtime for backend logic.
+- **Express.js**: Web framework for handling HTTP requests.
+- **MongoDB**: NoSQL database for storing tickets.
+- **Mongoose**: ORM for MongoDB to model ticket data.
+- **Cors**: Middleware for Cross-Origin Resource Sharing.
+- **Body-Parser**: Middleware for parsing incoming request bodies.
 
 ---
 
 ## ⚙️ Installation and Setup
 
 ### Prerequisites
-Make sure you have the following installed on your local machine:
+Before running this project, ensure that you have the following installed:
 - **Node.js** (v12+)
-- **MongoDB** (locally or via MongoDB Atlas)
 
-### Steps:
+### Steps to Set Up:
 
 1. **Clone the Repository**:
    ```bash
@@ -56,169 +51,41 @@ Make sure you have the following installed on your local machine:
    cd TixFlow
    ```
 
-2. **Install Dependencies**:
-   Navigate to the root directory of the project and run the following command to install the required packages:
+2. **Install Backend Dependencies**:
+   Navigate to backend directory, run the following command to install server-side dependencies:
    ```bash
+   cd backend
    npm install
    ```
 
-3. **Set up Environment Variables**:
-   Create a `.env` file in the root directory with the following content:
+3. **Install Frontend Dependencies**:
+   Navigate to the client directory and install dependencies for the frontend:
    ```bash
-   MONGO_DB_URI=<Your MongoDB URI>
+   cd frontend
+   npm install
+   ```
+
+4. **Set up Environment Variables**:
+   Create a `.env` file in the backend directory with a MongoDB URI:
+   ```bash
+   MONGO_DB_URI=mongodb+srv://bhavesh:Bhavesh%23123@cluster0.9igeh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
    PORT=3000
    ```
 
-4. **Run the Application**:
-   After setting up the environment variables, start the application by running:
+5. **Run the Backend**:
+   Start the Node.js server with the following command:
    ```bash
    npm start
    ```
 
-5. **Test the API**:
-   Use a tool like **Postman** or **cURL** to test the endpoints mentioned below.
+6. **Run the Frontend**:
+   In a new terminal, navigate to the `client` folder and start the React app:
+   ```bash
+   cd client
+   npm start
+   ```
 
----
-
-## 🔗 API Documentation
-
-### Base URL: `http://localhost:3000/api`
-
-### Endpoints:
-
-#### 1. **Create a new ticket**
-   - **Endpoint**: `POST /api/tickets`
-   - **Description**: Creates a new support ticket.
-   - **Request Body**:
-     ```json
-     {
-       "title": "Issue with login",
-       "description": "Unable to log into the system",
-       "status": "Open",            // Optional, defaults to "Open"
-       "priority": "High",           // Optional, defaults to "Medium"
-       "createdBy": "John Doe"       // Required
-     }
-     ```
-   - **Success Response**:
-     ```json
-     {
-       "_id": "6139d98f5d43233b3410fb7a",
-       "title": "Issue with login",
-       "description": "Unable to log into the system",
-       "status": "Open",
-       "priority": "High",
-       "createdBy": "John Doe",
-       "createdAt": "2021-09-09T12:00:00.000Z",
-       "updatedAt": "2021-09-09T12:00:00.000Z"
-     }
-     ```
-
-#### 2. **Retrieve all tickets**
-   - **Endpoint**: `GET /api/tickets`
-   - **Description**: Fetch all tickets.
-   - **Success Response**:
-     ```json
-     [
-       {
-         "_id": "6139d98f5d43233b3410fb7a",
-         "title": "Issue with login",
-         "description": "Unable to log into the system",
-         "status": "Open",
-         "priority": "High",
-         "createdBy": "John Doe",
-         "createdAt": "2021-09-09T12:00:00.000Z",
-         "updatedAt": "2021-09-09T12:00:00.000Z"
-       },
-       {
-         "_id": "6139d98f5d43233b3410fb7b",
-         "title": "Error in payment gateway",
-         "description": "Payment is failing",
-         "status": "Closed",
-         "priority": "Medium",
-         "createdBy": "Jane Smith",
-         "createdAt": "2021-09-08T15:00:00.000Z",
-         "updatedAt": "2021-09-09T12:00:00.000Z"
-       }
-     ]
-     ```
-
-#### 3. **Retrieve a single ticket by ID**
-   - **Endpoint**: `GET /api/tickets/:id`
-   - **Description**: Fetch a specific ticket by its unique identifier.
-   - **Success Response**:
-     ```json
-     {
-       "_id": "6139d98f5d43233b3410fb7a",
-       "title": "Issue with login",
-       "description": "Unable to log into the system",
-       "status": "Open",
-       "priority": "High",
-       "createdBy": "John Doe",
-       "createdAt": "2021-09-09T12:00:00.000Z",
-       "updatedAt": "2021-09-09T12:00:00.000Z"
-     }
-     ```
-
-#### 4. **Update a ticket by ID**
-   - **Endpoint**: `PATCH /api/tickets/:id`
-   - **Description**: Update the details of an existing ticket by its unique identifier.
-   - **Request Body**:
-     ```json
-     {
-       "status": "In Progress",
-       "priority": "Low"
-     }
-     ```
-   - **Success Response**:
-     ```json
-     {
-       "_id": "6139d98f5d43233b3410fb7a",
-       "title": "Issue with login",
-       "description": "Unable to log into the system",
-       "status": "In Progress",
-       "priority": "Low",
-       "createdBy": "John Doe",
-       "createdAt": "2021-09-09T12:00:00.000Z",
-       "updatedAt": "2021-09-09T14:00:00.000Z"
-     }
-     ```
-
-#### 5. **Delete a ticket by ID**
-   - **Endpoint**: `DELETE /api/tickets/:id`
-   - **Description**: Deletes a ticket by its unique identifier.
-   - **Success Response**:
-     ```json
-     {
-       "message": "Ticket deleted successfully"
-     }
-     ```
-
----
-
-## 🧪 Testing the API
-
-You can use **Postman** or **cURL** to test the API endpoints:
-- **Postman**: Create requests for each endpoint and verify the response.
-- **cURL** example for creating a ticket:
-  ```bash
-  curl -X POST http://localhost:3000/api/tickets \
-  -H "Content-Type: application/json" \
-  -d '{"title": "New issue", "description": "Something went wrong", "createdBy": "User"}'
-  ```
-
----
-
-## 📝 Validation and Error Handling
-
-- **Validation**: Each ticket requires a title, description, and createdBy fields. Optional fields like `status` and `priority` have default values.
-- **Error Handling**: If any field is missing or invalid, the server returns a `400 Bad Request` error. Non-existent tickets return a `404 Not Found`.
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License**. Feel free to use and modify the code.
-
----
-
-Feel free to modify the README for further details or project-specific information. Let me know if you need additional changes!
+7. **Access the Application**:
+   Open your browser and go to `http://localhost:5173` to interact with TixFlow.
+   
+   Go to `http://localhost:3000/api/tickets` to interact with the backend API
