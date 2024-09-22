@@ -81,11 +81,10 @@ Before running this project, ensure that you have the following installed:
 6. **Run the Frontend**:
    In a new terminal, navigate to the `client` folder and start the React app:
    ```bash
-   cd client
+   cd frontend
    npm start
    ```
 
 7. **Access the Application**:
    Open your browser and go to `http://localhost:5173` to interact with TixFlow.
-   
    Go to `http://localhost:3000/api/tickets` to interact with the backend API
